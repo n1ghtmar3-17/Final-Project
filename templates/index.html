@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fake News Detector</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+        <script src="{{ url_for('static', filename='script.js') }}"></script>
+    </head>
+
+
+    <body>
+        <div class="header">
+            <h1>Fake News Detector</h1>
+            <p>Analyze the credibility of news articles.</p>
+        </div>
+
+        <div class="body">
+            <form method = "POST" id = "analysis-form">
+                <textarea name = "article" rows = "10" cols = "50" placeholder = "Input article here"></textarea>
+                <br></br>
+                <button type = "submit">Analyze</button>
+            </form>
+            <br>
+            <div class="results">
+                {% if prediction is not none %}
+                <h2>Prediction: {{prediction}}</h2>
+                <h3>Confidence: {{confidence}}%</h3> 
+                {% endif %}
+            </div>
+        </div>
+    </body>
+
+
+
+</html>
