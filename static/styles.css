@@ -3,16 +3,51 @@
 body {
     font-family: "Inter", sans-serif;
     text-align: center;
+    background: #121212;
 }
 
 .header {
     padding: 20px;
-    background-color: #2c4274;
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* text color */
     color: white;
+    text-align: center;
+    text-shadow: 2px 2px 5px black;
+    /* header transition */
+    transition: background-image 0.5s ease-in-out;
+    /* adding dark overlay */
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
 }
 
+.header::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    background: rgba(0, 0, 0, 0.4);
+}
+.header * {
+    position: relative;
+    z-index: 1;
+}
+
+/* .divider {
+    height: 30px;
+    background: #000000;
+} */
+
 form {
-    padding: 20px;
+    padding: 50px;
 }
 
 button {
@@ -21,8 +56,9 @@ button {
     border-radius: 8px;
     cursor: pointer;
     transition: transform .2s;
-    background-color: #2c4274;
+    background-color: #26365c;
     color: white;
+    text-shadow: 2px 2px 5px black;
 }
 
 button:hover {
@@ -30,15 +66,6 @@ button:hover {
 }
 
 .results {
-    padding:20px
-}
-
-
-.body {
-    background:
-        linear-gradient(
-            135deg,
-            #f5f7fa,
-            #c3cfe2
-        );
+    color: white;
+    text-shadow: 2px 2px 5px black;
 }
