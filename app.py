@@ -11,14 +11,22 @@ def home():
     confidence = None
     if request.method == "POST":
         article = request.form["article"]
-        article_vector = vectorizer.transform([article])
-        prediction = model.predict(article_vector)[0]
-        if prediction == 0:
-            prediction = "Fake"
-        else:
+        
+        # easter egg
+        normalized = (article.lower().replace(".", "").replace("!", "").strip())
+        if normalized == "mrs tan is the best teacher ever":
             prediction = "Real"
-        probs = model.predict_proba(article_vector)[0] #confidence score
-        confidence = round(max(probs) * 100, 2)
+            confidence = 100.00
+        else:
+            article_vector = vectorizer.transform([article])
+            prediction = model.predict(article_vector)[0]
+            if prediction == 0:
+                prediction = "Fake"
+            else:
+                prediction = "Real"
+            probs = model.predict_proba(article_vector)[0] #confidence score
+            confidence = round(max(probs) * 100, 2)
+        
     return render_template("index.html", 
                            prediction=prediction, 
                            confidence=confidence)
